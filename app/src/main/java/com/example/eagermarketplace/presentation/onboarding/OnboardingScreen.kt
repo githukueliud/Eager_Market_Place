@@ -1,4 +1,9 @@
 package com.example.eagermarketplace.presentation.onboarding
 
-class OnboardingScreen {
+import androidx.compose.runtime.Composable
+
+
+@Composable
+fun OnboardingScreen() {
+
 }

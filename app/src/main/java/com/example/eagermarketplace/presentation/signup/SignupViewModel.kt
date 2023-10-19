@@ -2,6 +2,7 @@ package com.example.eagermarketplace.presentation.signup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.eagermarketplace.data.repository.AuthRepository
 import com.example.eagermarketplace.data.repository.FormValidationRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -15,7 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignupViewModel @Inject constructor(
-    private val formValidationRepository: FormValidationRepository
+    private val formValidationRepository: FormValidationRepository,
+    private val authRepository: AuthRepository
 ) : ViewModel() {
     private val _state = MutableStateFlow(SignupState())
     val state = _state.asStateFlow()

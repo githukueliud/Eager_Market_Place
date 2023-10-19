@@ -4,11 +4,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.eagermarketplace.data.repository.AuthRepository
 import com.example.eagermarketplace.data.repository.FormValidationRepository
+import com.example.eagermarketplace.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -82,8 +86,39 @@ class SignupViewModel @Inject constructor(
             return
         } else {
             //handle the sign up request
+            registerUser(
+                _state.value.email,
+                _state.value.password
+            )
         }
 
+    }
+
+    fun registerUser(email: String, password: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+
+            delay(3000)
+            authRepository.registerUser(email, password).collect { result ->
+                when (result) {
+                    is Resource.Success -> {
+                        delay(3000)
+                        _state.update { it.copy(loading = false) }
+                        _eventFlow.emit(SignupUiEvents.ShowSnackBar("Account created"))
+                        delay(1500)
+                        _eventFlow.emit(SignupUiEvents.NavigateToLogin)
+                    }
+
+                    is Resource.Error -> {
+                        _state.update { it.copy(loading = false) }
+                        _eventFlow.emit(SignupUiEvents.ShowSnackBar(result.message + "An error occurred"))
+                    }
+                    is Resource.Loading -> {
+                        _state.update { it.copy(loading = true) }
+                    }
+
+                }
+            }
+        }
     }
 
 

@@ -28,7 +28,7 @@ fun EagerMarketApp(
         startDestination = Destinations.OnboardingScreen.route
     ) {
         composable(route = Destinations.OnboardingScreen.route) {
-            OnboardingScreen()
+            OnboardingScreen(navController = navController)
         }
         composable(route = Destinations.LoginScreen.route) {
             LoginScreen()
@@ -46,7 +46,7 @@ fun NavGraphBuilder.bottomBarGraph(navController: NavController) {
         route = Destinations.BottomNavGraph.route
     ) {
         composable(route = BottomBarDestination.HomeScreen.route) {
-            HomeScreen(navController = navController)
+            HomeScreen()
         }
         composable(route = BottomBarDestination.Cart.route) {
             CartScreen()

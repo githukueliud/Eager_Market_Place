@@ -46,7 +46,7 @@ fun NavGraphBuilder.bottomBarGraph(navController: NavController) {
         route = Destinations.BottomNavGraph.route
     ) {
         composable(route = BottomBarDestination.HomeScreen.route) {
-            HomeScreen()
+            HomeScreen(navController = navController)
         }
         composable(route = BottomBarDestination.Cart.route) {
             CartScreen()

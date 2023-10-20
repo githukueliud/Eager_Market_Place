@@ -3,6 +3,7 @@ package com.example.eagermarketplace.presentation.components
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material.icons.outlined.Visibility
 import androidx.compose.material.icons.outlined.VisibilityOff
@@ -45,6 +46,7 @@ fun FormPasswordField(
         modifier = modifier,
         label = { Text(text = label) },
         supportingText = { Text(text = "Enter your $label", fontSize = 12.sp) },
+        leadingIcon = { Icon(imageVector = Icons.Filled.Lock, contentDescription = null)},
         trailingIcon = {
             val icon = if (showPassword) Icons.Outlined.Visibility else Icons.Outlined.VisibilityOff
             IconButton(onClick = toggleVisibility) {
@@ -66,7 +68,7 @@ fun FormPasswordField(
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun FormPasswordFieldPreview() {
     FormPasswordField(

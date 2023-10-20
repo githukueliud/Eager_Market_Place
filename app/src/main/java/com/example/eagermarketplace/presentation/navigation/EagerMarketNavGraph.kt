@@ -34,7 +34,7 @@ fun EagerMarketApp(
             LoginScreen()
         }
         composable(route = Destinations.SignupScreen.route) {
-            SignupScreen()
+            SignupScreen(navController = navController)
         }
         bottomBarGraph(navController = navController)
     }

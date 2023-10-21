@@ -18,7 +18,7 @@ import com.example.eagermarketplace.presentation.signup.SignupScreen
 
 
 @Composable
-fun EagerMarketApp(
+fun EagerMarketAppNav(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {

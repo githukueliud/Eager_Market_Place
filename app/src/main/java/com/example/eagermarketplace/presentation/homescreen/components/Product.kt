@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.outlined.Favorite
@@ -31,6 +32,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -73,7 +75,7 @@ fun Product(
             ){
                 val iconColor = if (isFavorite) Color.Red else Color.LightGray
                 Box(
-                    modifier = Modifier
+                    modifier = Modifier.padding(end = 5.dp)
                         .size(20.dp)
                         .clickable {
                             isFavorite != isFavorite
@@ -93,6 +95,7 @@ fun Product(
                 modifier = Modifier
                     .height(50.dp)
                     .width(80.dp)
+                    .clip(RoundedCornerShape(5.dp))
             )
             Text(
                 text = "Ksh. $price",
@@ -143,7 +146,7 @@ fun Product(
     }
 }
 
-@Preview(showBackground = true)
+@Preview()
 @Composable
 fun ProductPreview() {
     Product(

@@ -1,6 +1,8 @@
 package com.example.eagermarketplace.presentation.homescreen.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,15 +11,27 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material3.AlertDialogDefaults.containerColor
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.ListItemDefaults.contentColor
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -29,21 +43,26 @@ import androidx.compose.ui.unit.sp
 import com.example.eagermarketplace.R
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Product(
     modifier: Modifier = Modifier,
-    isFavorite: Boolean,
     productImage: Int,
     price: Int,
     productName: String,
     onAddToCartClicked: () -> Unit,
-    productQuantity: Int?
+    productQuantity: Int?,
+    containerColor: Color,
+    contentColor: Color
 ) {
     Card(
         modifier = Modifier
             .height(160.dp)
             .width(100.dp)
     ){
+        var isFavorite by remember {
+            mutableStateOf(false)
+        }
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -52,14 +71,20 @@ fun Product(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.End
             ){
-                Image(
-                    imageVector = Icons.Outlined.FavoriteBorder,
-                    contentDescription = null,
+                val iconColor = if (isFavorite) Color.Red else Color.LightGray
+                Box(
                     modifier = Modifier
                         .size(20.dp)
-                        .padding(end = 2.dp, top = 2.dp),
-
-                )
+                        .clickable {
+                            isFavorite != isFavorite
+                        }
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Favorite,
+                        contentDescription = null,
+                        tint = iconColor
+                    )
+                }
             }
             Image(
                 painter = painterResource(id = productImage),
@@ -75,7 +100,7 @@ fun Product(
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 3.dp)
+                    .padding(start = 3.dp, top = 4.dp)
             )
             Text(
                 text = "$productName",
@@ -101,11 +126,17 @@ fun Product(
                 onClick = onAddToCartClicked,
                 modifier = Modifier
                     .height(30.dp)
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                shape = MaterialTheme.shapes.medium,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = containerColor,
+                    contentColor = contentColor
+                ),
             ) {
                 Text(
                     text = "Add to Cart",
-                    fontSize = 10.sp
+                    fontSize = 10.sp,
+
                 )
             }
         }
@@ -116,11 +147,12 @@ fun Product(
 @Composable
 fun ProductPreview() {
     Product(
-        isFavorite = true,
         productImage = R.drawable.soko_5,
         price = 30,
         productName = "Nyanya",
         onAddToCartClicked = { /*TODO*/ },
-        productQuantity = 4
+        productQuantity = 4,
+        containerColor = MaterialTheme.colorScheme.primary,
+        contentColor = MaterialTheme.colorScheme.onPrimary
     )
 }

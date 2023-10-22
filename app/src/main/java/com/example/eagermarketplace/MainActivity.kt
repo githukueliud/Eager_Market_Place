@@ -12,6 +12,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
+import com.example.eagermarketplace.presentation.bottombar.BottomBar
 import com.example.eagermarketplace.presentation.navigation.EagerMarketAppNav
 import com.example.eagermarketplace.ui.theme.EagerMarketPlaceTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,7 +35,7 @@ class MainActivity : ComponentActivity() {
                     //app entry comes here
                     Scaffold(
                         bottomBar = {
-                            //BottomBar()
+                            BottomBar(navController = navController)
                         }
                     ) {contentPadding ->
                         EagerMarketAppNav(

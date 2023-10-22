@@ -89,9 +89,9 @@ fun OnboardingScreenContent(
     onEvent: (OnboardingEvents) -> Unit
 ) {
     val pageCount = 3
-    val pagerState = rememberPagerState(
-        initialPage = 0
-    )
+    val numberOfPages = 3
+    val initialPage = (numberOfPages - 1).toFloat()
+    val pagerState = rememberPagerState(initialPage = 0)
 
 
     LazyColumn(

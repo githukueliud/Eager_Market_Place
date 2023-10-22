@@ -59,9 +59,9 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.eagermarketplace.R
-import com.example.eagermarketplace.presentation.components.AppLogo
-import com.example.eagermarketplace.presentation.components.FormButton
-import com.example.eagermarketplace.presentation.components.FormTextField
+import com.example.eagermarketplace.presentation.common.AppLogo
+import com.example.eagermarketplace.presentation.common.FormButton
+import com.example.eagermarketplace.presentation.common.FormTextField
 import com.example.eagermarketplace.presentation.navigation.Destinations
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

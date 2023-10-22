@@ -1,4 +1,4 @@
-package com.example.eagermarketplace.presentation.components
+package com.example.eagermarketplace.presentation.common
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding

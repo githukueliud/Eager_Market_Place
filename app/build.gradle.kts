@@ -82,6 +82,12 @@ dependencies {
     //Lottie
     implementation("com.airbnb.android:lottie-compose:6.0.0")
 
+    //Compose Foundation
+    implementation ("androidx.compose.foundation:foundation:1.4.3")
+
+    //Accompanist
+    implementation ("com.google.accompanist:accompanist-systemuicontroller:0.31.4-beta")
+
 
     // WorkManager dependency
     implementation("androidx.work:work-runtime-ktx:2.8.1")

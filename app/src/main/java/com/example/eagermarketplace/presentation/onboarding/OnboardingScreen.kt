@@ -1,83 +1,111 @@
 package com.example.eagermarketplace.presentation.onboarding
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.navigation.NavController
-import com.example.eagermarketplace.R
-import com.example.eagermarketplace.presentation.navigation.Destinations
-import com.example.eagermarketplace.presentation.onboarding.components.OnboardingButton
-import com.example.eagermarketplace.presentation.onboarding.components.Page
+import com.example.eagermarketplace.presentation.Dimens.MediumPadding1
+import com.example.eagermarketplace.presentation.Dimens.PaddingIndicatorWidth
+import com.example.eagermarketplace.presentation.common.AppButton
+import com.example.eagermarketplace.presentation.common.AppTextButton
+import com.example.eagermarketplace.presentation.onboarding.components.OnboardingPage
+import com.example.eagermarketplace.presentation.onboarding.components.PageIndicator
 import com.example.eagermarketplace.ui.theme.EagerMarketPlaceTheme
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnboardingScreen(
     navController: NavController,
     viewModel: OnboardingViewModel = hiltViewModel()
 ) {
 
-    LaunchedEffect(key1 = true) {
-        viewModel.onboardingFlow.collectLatest {event ->
-            when(event) {
-                OnboardingUiEvents.NavigateToLogin -> {
-                    navController.navigate(Destinations.LoginScreen.route) {
-                        popUpTo(Destinations.OnboardingScreen.route) {
-                            inclusive = true
-                        }
-                    }
-                }
-                OnboardingUiEvents.NavigateToSignup -> {
-                    navController.navigate(Destinations.SignupScreen.route) {
-                        popUpTo(Destinations.OnboardingScreen.route) {
-                            inclusive = true
-                        }
-                    }
-                }
-                OnboardingUiEvents.BeginOnboarding -> {
-                    navController.navigate(Destinations.OnboardingScreen.route)
-                }
-
-                OnboardingUiEvents.NavigateToHome -> {
-                    navController.navigate(Destinations.BottomNavGraph.route){
-                        popUpTo(Destinations.OnboardingScreen.route) {
-                            inclusive = true
-                        }
-                    }
+    Column(modifier = Modifier.fillMaxSize()) {
+        val pagerState = rememberPagerState(initialPage = 0) {
+            pages.size
+        }
+        val buttonState = remember {
+            derivedStateOf {
+                when (pagerState.currentPage) {
+                    0 -> listOf("", "Next")
+                    1 -> listOf("Back", "Next")
+                    2 -> listOf("Back", "Get Started")
+                    else -> listOf("", "")
                 }
             }
         }
-    }
 
+        HorizontalPager(state = pagerState) {index ->
+            OnboardingPage(page = pages[index])
+        }
+        Spacer(modifier = Modifier.weight(1f))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = MediumPadding1)
+                .navigationBarsPadding(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            PageIndicator(
+                modifier = Modifier.padding(PaddingIndicatorWidth),
+                pageSize = pages.size,
+                selectedPage = pagerState.currentPage
+            )
+
+
+            Row(
+                modifier = Modifier,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                val scope = rememberCoroutineScope()
+                if (buttonState.value[0].isNotEmpty()) {
+                    AppTextButton(
+                        text = buttonState.value[0],
+                        onclick = {
+                            scope.launch {
+                                pagerState.animateScrollToPage(page = pagerState.currentPage - 1)
+                            }
+                        }
+                    )
+                }
+                AppButton(
+                    text = buttonState.value[1],
+                    onclick = {
+                        scope.launch {
+                            if (pagerState.currentPage == 2) {
+                                //Navigate to signup screen
+                            } else {
+                                pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
+                            }
+                        }
+                    }
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.weight(0.5f)) //placed before the column closes
+    }
 }
 
 
@@ -86,91 +114,9 @@ fun OnboardingScreen(
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnboardingScreenContent(
-    onEvent: (OnboardingEvents) -> Unit
+
 ) {
-    val pageCount = 3
-    val numberOfPages = 3
-    val initialPage = (numberOfPages - 1).toFloat()
-    val pagerState = rememberPagerState(initialPage = 0)
 
-
-    LazyColumn(
-        modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(vertical = 16.dp),
-        verticalArrangement = Arrangement.SpaceEvenly,
-        horizontalAlignment = Alignment.Start
-    ) {
-        item {
-            AnimatedVisibility(visible = pagerState.currentPage == 0) {
-                OutlinedButton(
-                    onClick = { onEvent(OnboardingEvents.OnSkipClicked) },
-                    modifier = Modifier.padding(start = 16.dp)
-                ) {
-                    Text(text = "Skip", fontWeight = FontWeight.Bold)
-                }
-            }
-        }
-        item {
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                HorizontalPager(
-                    state = pagerState,
-                    contentPadding = PaddingValues(horizontal = 16.dp),
-                    pageSpacing = 16.dp,
-                    pageCount = pageCount
-                ) {page ->
-                    when (page) {
-                        0 -> {
-                            Page(
-                                imageId = R.drawable.soko_5,
-                                description = "Welcome to your online version of the local kibanda"
-                            )
-                        }
-                        1 -> {
-                            Page(
-                                imageId = R.drawable.soko_5,
-                                description = "Hapa ni mboka mtu yangu"
-                            )
-                        }
-                        2 -> {
-                            Page(
-                                imageId = R.drawable.soko_6,
-                                description = "Sasa wacha tuanze kazi"
-                            )
-                        }
-                    }
-                }
-                Row(
-                    Modifier
-                        .height(50.dp)
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    repeat(pageCount) {iteration ->
-                        val color =
-                            if (pagerState.currentPage == iteration) MaterialTheme.colorScheme.primary else Color.LightGray
-                        Box(
-                            modifier = Modifier
-                                .padding(2.dp)
-                                .clip(CircleShape)
-                                .background(color)
-                                .size(20.dp)
-                        )
-                    }
-                }
-            }
-        }
-        item {
-            AnimatedVisibility(visible = pagerState.currentPage == 2) {
-                OnboardingButton(
-                    onClick = { onEvent(OnboardingEvents.OnBeginClicked) },
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
-            }
-        }
-    }
 }
 
 
@@ -181,9 +127,7 @@ fun OnboardingScreenContentPreview() {
         Surface(
             modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
         ){
-            OnboardingScreenContent(
-                onEvent = {}
-            )
+
         }
     }
 }

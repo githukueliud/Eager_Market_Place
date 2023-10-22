@@ -37,7 +37,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun OnboardingScreen(
     navController: NavController,
-    viewModel: OnboardingViewModel = hiltViewModel()
+    event: (OnboardingEvent) -> Unit
 ) {
 
     Column(modifier = Modifier.fillMaxSize()) {
@@ -95,6 +95,7 @@ fun OnboardingScreen(
                         scope.launch {
                             if (pagerState.currentPage == 2) {
                                 //Navigate to signup screen
+                                event(OnboardingEvent.SaveAppEntry)
                             } else {
                                 pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
                             }

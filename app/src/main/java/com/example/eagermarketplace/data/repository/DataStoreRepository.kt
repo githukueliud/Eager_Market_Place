@@ -13,24 +13,24 @@ import kotlinx.coroutines.flow.map
 class DataStoreRepository(
     private val userPreferenceStore: DataStore<Preferences>
 ) {
-    suspend fun saveOnboardingState(onBoarded: Boolean) {
-        userPreferenceStore.edit { preferences ->
-            preferences[ON_BOARDING_KEY] = onBoarded
-        }
-    }
-
-    fun readOnboardingState(): Flow<Boolean> {
-        return userPreferenceStore.data
-            .catch { exception ->
-                if (exception is Exception) {
-                    emit(emptyPreferences())
-                } else {
-                    throw exception
-                }
-            }.map {preferences ->
-                preferences[ON_BOARDING_KEY] ?: false
-            }
-    }
+//    suspend fun saveOnboardingState(onBoarded: Boolean) {
+//        userPreferenceStore.edit { preferences ->
+//            preferences[ON_BOARDING_KEY] = onBoarded
+//        }
+//    }
+//
+//    fun readOnboardingState(): Flow<Boolean> {
+//        return userPreferenceStore.data
+//            .catch { exception ->
+//                if (exception is Exception) {
+//                    emit(emptyPreferences())
+//                } else {
+//                    throw exception
+//                }
+//            }.map {preferences ->
+//                preferences[ON_BOARDING_KEY] ?: false
+//            }
+//    }
 
     suspend fun savedLoggedInStatus(loggedIn: Boolean) {
         userPreferenceStore.edit { preferences ->

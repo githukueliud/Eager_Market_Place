@@ -3,6 +3,7 @@ package com.example.eagermarketplace.presentation.onboarding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.eagermarketplace.data.repository.DataStoreRepository
+import com.example.eagermarketplace.domain.usecases.app_entry.AppEntryUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -19,53 +20,21 @@ import javax.inject.Inject
 
 @HiltViewModel
 class OnboardingViewModel @Inject constructor(
-    private val dataStoreRepository: DataStoreRepository
+    private val appEntryUseCases: AppEntryUseCases
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(OnboardingState())
-    val state = _state.asStateFlow()
-
-    private val _onboardingFlow = MutableSharedFlow<OnboardingUiEvents>()
-    val onboardingFlow = _onboardingFlow.asSharedFlow()
-
-
-    fun onEvent(event: OnboardingEvents) {
+    fun onEvent(event: OnboardingEvent) {
         when(event) {
-            OnboardingEvents.OnBeginClicked -> {
-                viewModelScope.launch(Dispatchers.IO) {
-                    dataStoreRepository.saveOnboardingState(true)
-                    _onboardingFlow.emit(OnboardingUiEvents.NavigateToSignup)
-                }
-            }
-            OnboardingEvents.OnSkipClicked -> {
-                viewModelScope.launch(Dispatchers.IO) {
-                    dataStoreRepository.saveOnboardingState(true)
-                    _onboardingFlow.emit(OnboardingUiEvents.NavigateToLogin)
-                }
+            is OnboardingEvent.SaveAppEntry -> {
+                saveAppEntry()
             }
         }
     }
 
-    private fun readOnboardingState() {
-        viewModelScope.launch(Dispatchers.IO) {
-            _state.update {
-                it.copy(
-                    isOnBoarded = dataStoreRepository.readOnboardingState().stateIn(this).value,
-                    isLoggedIn = dataStoreRepository.readOnboardingState().stateIn(this).value
-                )
-            }
-            delay(3000)
-            if (_state.value.isOnBoarded) {
-                if (_state.value.isLoggedIn) {
-                    _onboardingFlow.emit(OnboardingUiEvents.NavigateToHome)
-                } else {
-                    _onboardingFlow.emit(OnboardingUiEvents.NavigateToLogin)
-                }
-            } else {
-                _onboardingFlow.emit(OnboardingUiEvents.BeginOnboarding)
-            }
+    private fun saveAppEntry() {
+        viewModelScope.launch {
+            appEntryUseCases.saveAppEntry()
         }
     }
-
 
 }

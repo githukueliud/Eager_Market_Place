@@ -19,14 +19,14 @@ val Context.userPreferenceStore by preferencesDataStore(name = STORE_NAME)
 @Module
 @InstallIn(SingletonComponent::class)
 object DataStoreModule {
-    @Provides
-    @Singleton
-    fun provideUserPreferenceStore(@ApplicationContext context: Context)
-    = context.userPreferenceStore
-
-    @Provides
-    @Singleton
-    fun provideDataStoreRepository(
-        userPreferenceStore: DataStore<Preferences>
-    ) = DataStoreRepository((userPreferenceStore))
+//    @Provides
+//    @Singleton
+//    fun provideUserPreferenceStore(@ApplicationContext context: Context)
+//    = context.userPreferenceStore
+//
+//    @Provides
+//    @Singleton
+//    fun provideDataStoreRepository(
+//        userPreferenceStore: DataStore<Preferences>
+//    ) = DataStoreRepository((userPreferenceStore))
 }

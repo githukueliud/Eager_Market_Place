@@ -3,7 +3,6 @@ package com.example.eagermarketplace.presentation.login
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.eagermarketplace.data.repository.AuthRepository
-import com.example.eagermarketplace.data.repository.DataStoreRepository
 import com.example.eagermarketplace.data.repository.FormValidationRepository
 import com.example.eagermarketplace.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val dataStoreRepository: DataStoreRepository,
+    //private val dataStoreRepository: DataStoreRepository,
     private val authRepository: AuthRepository,
     private val formValidationRepository: FormValidationRepository
 ) : ViewModel() {
@@ -91,7 +90,7 @@ class LoginViewModel @Inject constructor(
                     is Resource.Success -> {
                         _state.update { it.copy(loading = false) }
                         delay(3000)
-                        dataStoreRepository.savedLoggedInStatus(true)
+                        //dataStoreRepository.savedLoggedInStatus(true)
                         _eventFlow.emit(LoginUIEvents.ShowSnackBar("Success"))
                         delay(1500)
                         _eventFlow.emit(LoginUIEvents.NavigateToHome)

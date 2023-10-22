@@ -2,7 +2,6 @@ package com.example.eagermarketplace.presentation.onboarding
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.eagermarketplace.data.repository.DataStoreRepository
 import com.example.eagermarketplace.domain.usecases.app_entry.AppEntryUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

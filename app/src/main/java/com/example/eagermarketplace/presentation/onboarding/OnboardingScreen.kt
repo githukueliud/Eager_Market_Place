@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -24,7 +25,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.navigation.NavController
 import com.example.eagermarketplace.presentation.Dimens.MediumPadding1
-import com.example.eagermarketplace.presentation.Dimens.PaddingIndicatorWidth
+import com.example.eagermarketplace.presentation.Dimens.PageIndicatorWidth
 import com.example.eagermarketplace.presentation.common.AppButton
 import com.example.eagermarketplace.presentation.common.AppTextButton
 import com.example.eagermarketplace.presentation.onboarding.components.OnboardingPage
@@ -68,7 +69,7 @@ fun OnboardingScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             PageIndicator(
-                modifier = Modifier.padding(PaddingIndicatorWidth),
+                modifier = Modifier.width(PageIndicatorWidth),
                 pageSize = pages.size,
                 selectedPage = pagerState.currentPage
             )

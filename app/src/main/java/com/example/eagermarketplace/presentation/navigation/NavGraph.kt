@@ -3,20 +3,13 @@ package com.example.eagermarketplace.presentation.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
-import com.example.eagermarketplace.presentation.cart.CartScreen
-import com.example.eagermarketplace.presentation.history.HistoryScreen
-import com.example.eagermarketplace.presentation.homescreen.HomeScreen
 import com.example.eagermarketplace.presentation.login.LoginScreen
 import com.example.eagermarketplace.presentation.onboarding.OnboardingScreen
 import com.example.eagermarketplace.presentation.onboarding.OnboardingViewModel
-import com.example.eagermarketplace.presentation.settings.SettingsScreen
 import com.example.eagermarketplace.presentation.signup.SignupScreen
 
 

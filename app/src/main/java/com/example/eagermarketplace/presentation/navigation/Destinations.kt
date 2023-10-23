@@ -1,8 +1,14 @@
 package com.example.eagermarketplace.presentation.navigation
 
 sealed class Destinations(val route: String) {
-    object OnboardingScreen: Destinations("onboarding_screen")
-    object LoginScreen: Destinations("login_screen")
-    object SignupScreen: Destinations("signup_screen")
-    object BottomNavGraph: Destinations("bottom_nav_graph")
+    object OnboardingScreen: Destinations("onboardingScreen")
+    object LoginScreen: Destinations("loginScreen")
+    object SignupScreen: Destinations("signupScreen")
+    object BottomNavGraph: Destinations("bottomNavGraph")
+    object AppStartNavigation: Destinations("appStartNavigation")
+    object AppNavigation: Destinations("appNavigation")
+    object AppNavigatorScreen: Destinations("appNavigatorScreen")
+
+    object AppAuthProcess: Destinations("appAuthProcess")
+
 }

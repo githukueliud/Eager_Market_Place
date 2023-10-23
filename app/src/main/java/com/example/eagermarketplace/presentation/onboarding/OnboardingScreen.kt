@@ -37,7 +37,6 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnboardingScreen(
-    navController: NavController,
     event: (OnboardingEvent) -> Unit
 ) {
 

@@ -8,11 +8,11 @@ import androidx.compose.material.icons.filled.Timelapse
 import androidx.compose.ui.graphics.vector.ImageVector
 
 sealed class BottomBarDestination(val route: String, val label: String, val icon: ImageVector) {
-    object HomeScreen: BottomBarDestination("home_screen", "home", Icons.Filled.Home)
+    object HomeScreen: BottomBarDestination("homeScreen", "home", Icons.Filled.Home)
 
-    object Cart: BottomBarDestination("cart_screen", "cart", Icons.Filled.ShoppingCart)
+    object CartScreen: BottomBarDestination("cartScreen", "cart", Icons.Filled.ShoppingCart)
 
-    object History: BottomBarDestination("history_screen", "history", Icons.Filled.Timelapse)
+    object History: BottomBarDestination("historyScreen", "history", Icons.Filled.Timelapse)
 
-    object Settings: BottomBarDestination("settings_screen", "settings", Icons.Filled.Settings)
+    object Settings: BottomBarDestination("settingsScreen", "settings", Icons.Filled.Settings)
 }

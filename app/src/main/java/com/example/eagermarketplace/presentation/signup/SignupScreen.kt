@@ -1,6 +1,7 @@
 package com.example.eagermarketplace.presentation.signup
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,7 +13,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -38,7 +41,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -51,6 +57,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.eagermarketplace.R
 import com.example.eagermarketplace.presentation.common.AppLogo
 import com.example.eagermarketplace.presentation.common.FormButton
 import com.example.eagermarketplace.presentation.common.FormPasswordField
@@ -92,27 +100,16 @@ fun SignupScreen(
     }
 
 
-    Scaffold(
-        snackbarHost = {
-            SnackbarHost(hostState = snackbarHostState)
-        },
-        topBar = {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp),
-                contentAlignment = Alignment.CenterStart
-            ) {
-                AppLogo()
-            }
-        }
-    ) {innerPadding ->
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ){
         SignupScreenComponent(
             state = state,
             onEvent = signupViewModel::onEvent,
-            modifier = Modifier.padding(top = innerPadding.calculateTopPadding())
+            modifier = Modifier
         )
     }
+
 }
 
 
@@ -122,9 +119,29 @@ fun SignupScreenComponent(
     modifier: Modifier = Modifier,
     state: SignupState,
     onEvent: (SignupEvents) -> Unit
-){
+) {
 
     val focusManager = LocalFocusManager.current
+
+
+
+    Column(
+        modifier = Modifier.fillMaxWidth().padding(top = 50.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            modifier = Modifier
+                .size(200.dp)
+                .clip(RoundedCornerShape(5.dp)),
+            painter = painterResource(id = R.drawable.mboka_hands_mboka),
+            contentDescription = null,
+            contentScale = ContentScale.Crop
+        )
+        Text(
+            text = "Signup to our platform to enjoy shopping at the\ncomfort of your home",
+            fontSize = 18.sp
+        )
+    }
 
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
@@ -132,7 +149,7 @@ fun SignupScreenComponent(
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.Bottom
     ) {
-        item { 
+        item {
             AnimatedVisibility(visible = state.loading) {
                 Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
                     LinearProgressIndicator(color = MaterialTheme.colorScheme.inversePrimary)
@@ -174,7 +191,7 @@ fun SignupScreenComponent(
                 FormTextField(
                     label = "Email",
                     value = state.email,
-                    onValueChange = {onEvent(SignupEvents.OnEmailChanged(it))},
+                    onValueChange = { onEvent(SignupEvents.OnEmailChanged(it)) },
                     leadingIcon = Icons.Filled.Email,
                     error = state.emailError != null,
                     modifier = Modifier.fillMaxWidth()
@@ -189,15 +206,15 @@ fun SignupScreenComponent(
                 FormPasswordField(
                     label = "Password",
                     value = state.password,
-                    onValueChange = {onEvent(SignupEvents.OnPasswordChanged(it))},
+                    onValueChange = { onEvent(SignupEvents.OnPasswordChanged(it)) },
                     leadingIcon = Icons.Filled.Lock,
                     error = state.passwordError != null,
                     showPassword = state.passwordVisibility,
-                    toggleVisibility = {onEvent(SignupEvents.OnPasswordVisibilityClicked)},
+                    toggleVisibility = { onEvent(SignupEvents.OnPasswordVisibilityClicked) },
                     modifier = Modifier.fillMaxWidth()
                 )
                 state.passwordError?.let {
-                    AnimatedVisibility(visible = true){
+                    AnimatedVisibility(visible = true) {
                         Text(text = it, color = MaterialTheme.colorScheme.error)
                     }
                 }
@@ -205,17 +222,17 @@ fun SignupScreenComponent(
             Column {
                 OutlinedTextField(
                     value = state.confirmPassword,
-                    onValueChange = {onEvent(SignupEvents.OnConfirmPasswordChanged(it))},
+                    onValueChange = { onEvent(SignupEvents.OnConfirmPasswordChanged(it)) },
                     modifier = Modifier.fillMaxWidth(),
-                    label = { Text(text = "Confirm Password")},
-                    supportingText = { Text(text = "Confirm your password", fontSize = 12.sp)},
-                    leadingIcon = { 
+                    label = { Text(text = "Confirm Password") },
+                    supportingText = { Text(text = "Confirm your password", fontSize = 12.sp) },
+                    leadingIcon = {
                         Icon(imageVector = Icons.Filled.Lock, contentDescription = null)
                     },
                     trailingIcon = {
                         val icon =
                             if (state.passwordVisibility) Icons.Outlined.Visibility else Icons.Outlined.VisibilityOff
-                        IconButton(onClick = {onEvent(SignupEvents.OnPasswordVisibilityClicked)}) {
+                        IconButton(onClick = { onEvent(SignupEvents.OnPasswordVisibilityClicked) }) {
                             Icon(imageVector = icon, contentDescription = null)
                         }
                     },
@@ -263,8 +280,10 @@ fun SignupScreenComponent(
                     letterSpacing = 0.07.sp
                 )
             }
+            Spacer(modifier = Modifier.height(20.dp))
         }
     }
+
 }
 
 
@@ -274,3 +293,4 @@ fun SignupScreenComponent(
 fun SignupContentPreview() {
     SignupScreenComponent(state = SignupState(), onEvent = {})
 }
+

@@ -9,6 +9,7 @@ sealed class Destinations(val route: String) {
     object AppNavigation: Destinations("appNavigation")
     object AppNavigatorScreen: Destinations("appNavigatorScreen")
 
+    object BottomBar: Destinations("bottomBar")
     object AppAuthProcess: Destinations("appAuthProcess")
 
 }

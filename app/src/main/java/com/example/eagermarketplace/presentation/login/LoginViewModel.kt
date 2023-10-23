@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.eagermarketplace.data.repository.AuthRepository
 import com.example.eagermarketplace.data.repository.FormValidationRepository
+import com.example.eagermarketplace.presentation.navigation.Destinations
 import com.example.eagermarketplace.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -48,6 +49,7 @@ class LoginViewModel @Inject constructor(
             LoginEvents.OnPasswordVisibilityClicked -> {
                 _state.update { it.copy(passwordVisibility = !_state.value.passwordVisibility) }
             }
+            else -> {}
         }
     }
 
@@ -94,6 +96,11 @@ class LoginViewModel @Inject constructor(
                         _eventFlow.emit(LoginUIEvents.ShowSnackBar("Success"))
                         delay(1500)
                         _eventFlow.emit(LoginUIEvents.NavigateToHome)
+                        Destinations.BottomNavGraph.route
+                    }
+                    else -> {
+                        _state.update { it.copy(loading = false) }
+                        _eventFlow.emit(LoginUIEvents.ShowSnackBar(result.message + "Error occurred when login in"))
                     }
                 }
             }

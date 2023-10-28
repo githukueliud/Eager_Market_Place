@@ -29,13 +29,13 @@ fun UserProfileScreen(
     ) {
         AddImageComponent(onclick = { onEditImageClicked() })
         Spacer(modifier = Modifier.height(5.dp))
-        FormTextField(
-            label = "Edit Username",
-            value = state.username,
-            onValueChange = ,
-            leadingIcon = ,
-            error =
-        )
+//        FormTextField(
+//            label = "Edit Username",
+//            value = state.username,
+//            onValueChange = {},
+//            leadingIcon = ,
+//            error =
+//        )
     }
 }
 
@@ -44,6 +44,6 @@ fun UserProfileScreen(
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun UserProfileScreenPreview() {
-    UserProfileScreen(onEditImageClicked = {})
+    //UserProfileScreen(onEditImageClicked = {})
 }
 

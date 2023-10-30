@@ -280,7 +280,7 @@ fun SignupScreenComponent(
                     letterSpacing = 0.07.sp
                 )
             }
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(50.dp))
         }
     }
 

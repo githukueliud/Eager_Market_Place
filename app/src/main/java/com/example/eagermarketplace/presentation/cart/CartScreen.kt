@@ -1,7 +1,12 @@
 package com.example.eagermarketplace.presentation.cart
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 
 
 @Composable
-fun CartScreen() {}
+fun CartScreen() {
+    Text(
+        text = "Hello from cart"
+    )
+}

@@ -86,6 +86,24 @@ fun UserProfileScreen(
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun UserProfileScreenPreview() {
-    //UserProfileScreen(onEditImageClicked = {})
+    UserProfileScreen(
+        onEditImageClicked = {},
+        onSaveProfileClicked = {},
+        state = UserProfileState(
+            userImage = 0,
+            username = "Eliud",
+            usernameError = "",
+            firstName = "Eliud",
+            firstNameError = "",
+            lastName = "Githuku",
+            lastNameError = "",
+            passwordError = "",
+            changePassword = "",
+            changeLocation = "",
+            changeEmail = "",
+            emailError = "",
+            passwordVisibility = false
+        )
+    )
 }
 

@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
-import com.example.eagermarketplace.presentation.bottombar.BottomBar
+import com.example.eagermarketplace.presentation.bottombar.AppNavigator
 import com.example.eagermarketplace.presentation.homescreen.HomeScreen
 import com.example.eagermarketplace.presentation.login.LoginScreen
 import com.example.eagermarketplace.presentation.onboarding.OnboardingScreen
@@ -52,10 +52,10 @@ fun NavGraph(
         //app navigation once logged in
         navigation(
             startDestination = Destinations.BottomBar.route,
-            route = Destinations.HomeScreen.route
+            route = Destinations.AppNavigatorScreen.route
         ) {
-            composable(route = Destinations.BottomBar.route) {
-                BottomBar(navController = navController)
+            composable(route = Destinations.AppNavigatorScreen.route) {
+                AppNavigator()
             }
         }
     }

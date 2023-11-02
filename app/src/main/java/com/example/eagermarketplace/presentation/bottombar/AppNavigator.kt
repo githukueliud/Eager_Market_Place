@@ -22,6 +22,8 @@ import com.example.eagermarketplace.presentation.cart.CartScreen
 import com.example.eagermarketplace.presentation.favorite.FavoriteScreen
 import com.example.eagermarketplace.presentation.homescreen.HomeScreen
 import com.example.eagermarketplace.presentation.navigation.Destinations
+import com.example.eagermarketplace.presentation.user_profile.ProfileScreen
+import com.example.eagermarketplace.presentation.user_profile.UserProfileScreen
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -93,6 +95,9 @@ fun AppNavigator() {
             }
             composable(route = Destinations.FavoriteScreen.route) {
                 FavoriteScreen()
+            }
+            composable(route = Destinations.ProfileScreen.route) {
+                ProfileScreen()
             }
         }
     }

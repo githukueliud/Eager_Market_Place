@@ -17,7 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
-import com.example.eagermarketplace.presentation.bottombar.BottomBar
 import com.example.eagermarketplace.presentation.navigation.NavGraph
 import com.example.eagermarketplace.ui.theme.EagerMarketPlaceTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController

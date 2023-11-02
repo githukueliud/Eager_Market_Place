@@ -96,7 +96,7 @@ class LoginViewModel @Inject constructor(
                         _eventFlow.emit(LoginUIEvents.ShowSnackBar("Success"))
                         delay(1500)
                         _eventFlow.emit(LoginUIEvents.NavigateToHome)
-                        Destinations.BottomNavGraph.route
+                        Destinations.AppNavigation.route
                     }
                     else -> {
                         _state.update { it.copy(loading = false) }

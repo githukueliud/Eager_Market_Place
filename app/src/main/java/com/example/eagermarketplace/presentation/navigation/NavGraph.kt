@@ -51,8 +51,8 @@ fun NavGraph(
         
         //app navigation once logged in
         navigation(
-            startDestination = Destinations.BottomBar.route,
-            route = Destinations.AppNavigatorScreen.route
+            startDestination = Destinations.AppNavigatorScreen.route,
+            route = Destinations.AppNavigation.route
         ) {
             composable(route = Destinations.AppNavigatorScreen.route) {
                 AppNavigator()

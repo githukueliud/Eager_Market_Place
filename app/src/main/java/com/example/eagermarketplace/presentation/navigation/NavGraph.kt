@@ -52,7 +52,7 @@ fun NavGraph(
         //app navigation once logged in
         navigation(
             startDestination = Destinations.BottomBar.route,
-            route = Destinations.BottomNavGraph.route
+            route = Destinations.HomeScreen.route
         ) {
             composable(route = Destinations.BottomBar.route) {
                 BottomBar(navController = navController)

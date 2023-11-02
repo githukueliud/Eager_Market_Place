@@ -8,6 +8,7 @@ sealed class Destinations(val route: String) {
     object AppStartNavigation: Destinations("appStartNavigation")
     object AppNavigation: Destinations("appNavigation")
     object AppNavigatorScreen: Destinations("appNavigatorScreen")
+    object HomeScreen: Destinations("homeScreen")
 
     object BottomBar: Destinations("bottomBar")
     object AppAuthProcess: Destinations("appAuthProcess")

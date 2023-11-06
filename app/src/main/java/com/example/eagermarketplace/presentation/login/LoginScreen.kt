@@ -138,25 +138,25 @@ fun LoginScreenComponents(
     )
     val focusManager = LocalFocusManager.current
 
-    Column (
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 50.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Image(
-            modifier = Modifier
-                .size(200.dp)
-                .clip(RoundedCornerShape(5.dp)),
-            painter = painterResource(id = R.drawable.mboka_hands_mboka),
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
-        Text(
-            text = "Login to our platform to enjoy shopping at the\ncomfort of your home",
-            fontSize = 18.sp
-        )
-    }
+//    Column (
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(top = 50.dp),
+//        horizontalAlignment = Alignment.CenterHorizontally
+//    ) {
+//        Image(
+//            modifier = Modifier
+//                .size(200.dp)
+//                .clip(RoundedCornerShape(5.dp)),
+//            painter = painterResource(id = R.drawable.mboka_hands_mboka),
+//            contentDescription = null,
+//            contentScale = ContentScale.Crop
+//        )
+//        Text(
+//            text = "Login to our platform to enjoy shopping at the\ncomfort of your home",
+//            fontSize = 18.sp
+//        )
+//    }
 
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
@@ -179,7 +179,7 @@ fun LoginScreenComponents(
                     Spacer(modifier = Modifier.height(2.dp))
                     Text(
                         text = "Login to your account",
-                        fontSize = 12.sp,
+                        fontSize = 14.sp,
                         fontWeight = FontWeight.ExtraLight,
                         fontStyle = FontStyle.Italic
                     )

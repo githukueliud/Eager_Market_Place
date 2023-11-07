@@ -1,5 +1,6 @@
 package com.example.eagermarketplace.presentation.aboutproduct
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Card
@@ -30,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -50,6 +53,7 @@ fun AboutProductScreen(
     deliveryFee: Int,
     productDescription: String
 ) {
+    val context = LocalContext.current
     val productQuantity: MutableState<Int> = remember { mutableStateOf(1) }
     var isFavorite by remember {
         mutableStateOf(false)
@@ -74,7 +78,8 @@ fun AboutProductScreen(
                 Icon(
                     painter = painterResource(id = R.drawable.ic_back_arrow),
                     contentDescription = null,
-                    modifier = Modifier.clickable { onBackClicked() }
+                    modifier = Modifier
+                        .clickable { onBackClicked() }
                         .size(40.dp)
                         .padding(5.dp)
                 )
@@ -82,63 +87,71 @@ fun AboutProductScreen(
                     imageVector = Icons.Default.Favorite,
                     contentDescription = null,
                     tint = iconColor,
-                    modifier = Modifier.size(50.dp).padding(5.dp)
+                    modifier = Modifier
+                        .size(50.dp)
+                        .padding(5.dp)
                         .clickable { isFavorite = true }
                 )
             }
         }
         Card(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .height(300.dp)
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(5.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(
-                    text = productName,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.SemiBold
-                )
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                ){
-                    OutlinedIconButton(onClick = {
-                        if(productQuantity.value > 1)
-                            productQuantity.value--
-                    }) {
-                        Text(
-                            text = "-",
-                            fontSize = 28.sp
-                        )
-                    }
-                    Spacer(modifier = Modifier.height(10.dp))
-                    Text(
-                        text = productQuantity.value.toString(),
-                        fontSize = 25.sp
-                    )
-                    Spacer(modifier = Modifier.height(10.dp))
-                    OutlinedIconButton(onClick = { productQuantity.value++ }) {
-                        Text(
-                            text = "+",
-                            fontSize = 28.sp
-                        )
-                    }
-                }
-            }
-            Row {
-                Text(
-                    text = "Item Price: Kes. ",
-                    fontSize = 20.sp
-                )
-                Text(
-                    text = productPrice.toString(),
-                    fontSize = 20.sp
-                )
 
-            }
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(5.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            text = productName,
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            OutlinedIconButton(onClick = {
+                                if (productQuantity.value > 1)
+                                    productQuantity.value--
+                                else
+                                    Toast.makeText(context, "Minimum product quantity is one!", Toast.LENGTH_SHORT).show()
+                            }) {
+                                Text(
+                                    text = "-",
+                                    fontSize = 28.sp
+                                )
+                            }
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Text(
+                                text = productQuantity.value.toString(),
+                                fontSize = 25.sp
+                            )
+                            Spacer(modifier = Modifier.height(10.dp))
+                            OutlinedIconButton(onClick = { productQuantity.value++ }) {
+                                Text(
+                                    text = "+",
+                                    fontSize = 28.sp
+                                )
+                            }
+                        }
+                    }
+            LazyColumn() {
+                item {
+                    Row {
+                        Text(
+                            text = "Item Price: Kes. ",
+                            fontSize = 20.sp
+                        )
+                        Text(
+                            text = productPrice.toString(),
+                            fontSize = 20.sp
+                        )
+
+                    }
 //            Spacer(modifier = Modifier.height(5.dp))
 //            OutlinedButton(onClick = { onAddDelivery() }) {
 //                Text(
@@ -146,33 +159,35 @@ fun AboutProductScreen(
 //                    fontSize = 20.sp
 //                )
 //            }
-            Spacer(modifier = Modifier.height(5.dp))
-            Row{
-                Text(
-                    text = "Delivery fee: Kes. ",
-                    fontSize = 20.sp
-                )
-                Text(
-                    text = deliveryFee.toString(),
-                    fontSize = 20.sp
-                )
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Row {
+                        Text(
+                            text = "Delivery fee: Kes. ",
+                            fontSize = 20.sp
+                        )
+                        Text(
+                            text = deliveryFee.toString(),
+                            fontSize = 20.sp
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Row {
+                        Text(
+                            text = "Total Price: Kes. ",
+                            fontSize = 20.sp
+                        )
+                        Text(
+                            text = productTotalPrice.toString(),
+                            fontSize = 20.sp
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Text(
+                        text = productDescription,
+                        fontSize = 20.sp
+                    )
+                }
             }
-            Spacer(modifier = Modifier.height(5.dp))
-            Row{
-                Text(
-                    text = "Total Price: Kes. ",
-                    fontSize = 20.sp
-                )
-                Text(
-                    text = productTotalPrice.toString(),
-                    fontSize = 20.sp
-                )
-            }
-            Spacer(modifier = Modifier.height(5.dp))
-            Text(
-                text = productDescription,
-                fontSize = 20.sp
-            )
         }
     }
 }

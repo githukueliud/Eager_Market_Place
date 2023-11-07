@@ -134,13 +134,13 @@ fun AboutProductScreen(
                 )
 
             }
-            Spacer(modifier = Modifier.height(5.dp))
-            OutlinedButton(onClick = { onAddDelivery() }) {
-                Text(
-                    text = "Include delivery",
-                    fontSize = 20.sp
-                )
-            }
+//            Spacer(modifier = Modifier.height(5.dp))
+//            OutlinedButton(onClick = { onAddDelivery() }) {
+//                Text(
+//                    text = "Include delivery",
+//                    fontSize = 20.sp
+//                )
+//            }
             Spacer(modifier = Modifier.height(5.dp))
             Row{
                 Text(

@@ -21,6 +21,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedIconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -43,17 +44,17 @@ fun AboutProductScreen(
     productImage: Int,
     onBackClicked: () -> Unit,
     productName: String,
-    productQuantity: Int,
     productPrice: Int,
     productTotalPrice: Int,
     onAddDelivery: () -> Unit,
     deliveryFee: Int,
     productDescription: String
 ) {
+    val productQuantity: MutableState<Int> = remember { mutableStateOf(1) }
     var isFavorite by remember {
         mutableStateOf(false)
     }
-    val productTotalPrice = (productPrice * productQuantity) + deliveryFee
+    val productTotalPrice = (productPrice * productQuantity.value) + deliveryFee
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -103,7 +104,7 @@ fun AboutProductScreen(
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ){
-                    OutlinedIconButton(onClick = { /*TODO*/ }) {
+                    OutlinedIconButton(onClick = { productQuantity.value-- }) {
                         Text(
                             text = "-",
                             fontSize = 28.sp
@@ -111,11 +112,11 @@ fun AboutProductScreen(
                     }
                     Spacer(modifier = Modifier.height(10.dp))
                     Text(
-                        text = productQuantity.toString(),
+                        text = productQuantity.value.toString(),
                         fontSize = 25.sp
                     )
                     Spacer(modifier = Modifier.height(10.dp))
-                    OutlinedIconButton(onClick = { /*TODO*/ }) {
+                    OutlinedIconButton(onClick = { productQuantity.value++ }) {
                         Text(
                             text = "+",
                             fontSize = 28.sp
@@ -180,7 +181,6 @@ fun AboutProductScreenPreview() {
         productImage = R.drawable.soko_5,
         onBackClicked = { /*TODO*/ },
         productName = "Kabej",
-        productQuantity = 1,
         productPrice = 30,
         productTotalPrice = 30,
         onAddDelivery = { /*TODO*/ },

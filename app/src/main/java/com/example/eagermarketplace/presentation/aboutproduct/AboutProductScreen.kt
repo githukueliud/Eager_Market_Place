@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Card
@@ -119,7 +120,9 @@ fun AboutProductScreen(
                                     productQuantity.value--
                                 else
                                     Toast.makeText(context, "Minimum product quantity is one!", Toast.LENGTH_SHORT).show()
-                            }) {
+                            },
+                                shape = RoundedCornerShape(6.dp)
+                            ) {
                                 Text(
                                     text = "-",
                                     fontSize = 28.sp
@@ -131,7 +134,10 @@ fun AboutProductScreen(
                                 fontSize = 25.sp
                             )
                             Spacer(modifier = Modifier.height(10.dp))
-                            OutlinedIconButton(onClick = { productQuantity.value++ }) {
+                            OutlinedIconButton(
+                                onClick = { productQuantity.value++ },
+                                shape = RoundedCornerShape(6.dp)
+                            ) {
                                 Text(
                                     text = "+",
                                     fontSize = 28.sp

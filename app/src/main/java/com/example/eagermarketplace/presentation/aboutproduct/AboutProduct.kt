@@ -3,7 +3,7 @@ package com.example.eagermarketplace.presentation.aboutproduct
 import androidx.annotation.DrawableRes
 
 data class AboutProduct (
-    val name: String = "",
+    val productName: String = "",
     val category: String = "",
     val price: Int = 0,
     val location: String,

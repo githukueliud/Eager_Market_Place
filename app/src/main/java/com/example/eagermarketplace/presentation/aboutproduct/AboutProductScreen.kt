@@ -83,6 +83,7 @@ fun AboutProductScreen(
                     contentDescription = null,
                     tint = iconColor,
                     modifier = Modifier.size(50.dp).padding(5.dp)
+                        .clickable { isFavorite = true }
                 )
             }
         }
@@ -104,7 +105,10 @@ fun AboutProductScreen(
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ){
-                    OutlinedIconButton(onClick = { productQuantity.value-- }) {
+                    OutlinedIconButton(onClick = {
+                        if(productQuantity.value > 1)
+                            productQuantity.value--
+                    }) {
                         Text(
                             text = "-",
                             fontSize = 28.sp

@@ -147,7 +147,7 @@ fun SignupScreenComponent(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.Start,
         contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.Bottom
+        verticalArrangement = Arrangement.Center
     ) {
         item {
             AnimatedVisibility(visible = state.loading) {

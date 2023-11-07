@@ -36,11 +36,10 @@ import com.example.eagermarketplace.R
 
 
 @Composable
-fun CartItem(
+fun CartItemComponent(
     @DrawableRes productImage: Int,
     productName: String,
     productPrice: Int,
-    onRemoveCartItemClicked: () -> Unit
 ) {
     val context = LocalContext.current
     val productQuantity: MutableState<Int> = remember { mutableStateOf(1) }
@@ -127,13 +126,16 @@ fun CartItem(
     }
 }
 
+fun onRemoveCartItemClicked() {
+    TODO("Not yet implemented")
+}
+
 @Preview(showBackground = true)
 @Composable
 fun CartItemPreview() {
-    CartItem(
+    CartItemComponent(
         productImage = R.drawable.soko_5,
         productName = "Kabej",
         productPrice = 30,
-        onRemoveCartItemClicked = {}
     )
 }

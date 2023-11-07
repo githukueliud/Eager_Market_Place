@@ -49,8 +49,6 @@ fun AboutProductScreen(
     onBackClicked: () -> Unit,
     productName: String,
     productPrice: Int,
-    productTotalPrice: Int,
-    onAddDelivery: () -> Unit,
     deliveryFee: Int,
     productDescription: String
 ) {
@@ -207,8 +205,6 @@ fun AboutProductScreenPreview() {
         onBackClicked = { /*TODO*/ },
         productName = "Kabej",
         productPrice = 30,
-        productTotalPrice = 30,
-        onAddDelivery = { /*TODO*/ },
         deliveryFee = 50,
         productDescription = "Mzee tuma za kabej Mzee tuma za kabej Mzee tuma za kabej Mzee tuma za kabej"
     )

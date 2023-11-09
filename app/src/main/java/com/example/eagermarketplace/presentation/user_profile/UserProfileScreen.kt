@@ -35,7 +35,7 @@ fun UserProfileScreen(
             .padding(top = 25.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        AddImageComponent(onclick = { onEditImageClicked() })
+        AddImageComponent(onEditImageClicked = { onEditImageClicked() })
         Spacer(modifier = Modifier.height(5.dp))
         FormTextField(
             label = "Edit Username",

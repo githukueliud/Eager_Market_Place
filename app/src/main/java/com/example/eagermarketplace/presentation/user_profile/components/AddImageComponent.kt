@@ -5,11 +5,14 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.outlined.CameraAlt
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -28,13 +31,13 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun AddImageComponent(
     modifier: Modifier = Modifier,
-    onclick: () -> Unit
+    onEditImageClicked: () -> Unit
 ) {
     Card(
         modifier = Modifier
             .size(100.dp)
             .clip(RoundedCornerShape(50))
-            .clickable { onclick() },
+            .clickable { onEditImageClicked() },
         colors = CardDefaults.cardColors(
             containerColor = Color.LightGray,
             contentColor = Color.Black
@@ -54,6 +57,13 @@ fun AddImageComponent(
             Text(
                 text = "Add Image"
             )
+//            Icon(
+//                imageVector = Icons.Default.Edit,
+//                contentDescription = null,
+//                modifier = Modifier.fillMaxWidth()
+//                    .size(18.dp)
+//                    .padding(start = 75.dp)
+//            )
         }
     }
 }
@@ -62,5 +72,5 @@ fun AddImageComponent(
 @Preview
 @Composable
 fun AddImageComponentPreview() {
-    AddImageComponent(onclick = {})
+    AddImageComponent(onEditImageClicked = {})
 }

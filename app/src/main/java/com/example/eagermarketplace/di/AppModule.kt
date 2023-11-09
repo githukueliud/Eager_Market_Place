@@ -1,6 +1,10 @@
 package com.example.eagermarketplace.di
 
 import android.app.Application
+import androidx.room.Room
+import com.example.eagermarketplace.data.local.ItemDao
+import com.example.eagermarketplace.data.local.ItemDb
+import com.example.eagermarketplace.data.local.ItemRepository
 import com.example.eagermarketplace.data.manager.LocalUserMangerImpl
 import com.example.eagermarketplace.domain.manager.LocalUserManager
 import com.example.eagermarketplace.domain.usecases.app_entry.AppEntryUseCases
@@ -33,5 +37,30 @@ object AppModule {
         saveAppEntry = SaveAppEntry(localUserManager)
     )
 
+
+    @Provides
+    @Singleton
+    fun providesItemRepository(itemDao: ItemDao): ItemRepository = ItemRepository(itemDao)
+
+
+    @Provides
+    @Singleton
+    fun provideItemDatabase(
+        application: Application
+    ): ItemDb {
+        return Room.databaseBuilder(
+            context = application,
+            klass = ItemDb::class.java,
+            name = "ItemDb"
+        ).fallbackToDestructiveMigration()
+            .build()
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideItemDao(
+        itemDb: ItemDb
+    ): ItemDao = itemDb.itemDao
 
 }

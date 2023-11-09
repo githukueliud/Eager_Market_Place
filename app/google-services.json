@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "633565316932",
+    "project_id": "eager-market-place",
+    "storage_bucket": "eager-market-place.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:633565316932:android:6c10c235f23b469913f911",
+        "android_client_info": {
+          "package_name": "com.example.eagermarketplace"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ2y7RD5YNd50HQKPhrN4eON1sTiBrEc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

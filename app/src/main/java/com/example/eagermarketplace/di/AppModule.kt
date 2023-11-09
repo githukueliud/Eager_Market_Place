@@ -10,6 +10,9 @@ import com.example.eagermarketplace.domain.manager.LocalUserManager
 import com.example.eagermarketplace.domain.usecases.app_entry.AppEntryUseCases
 import com.example.eagermarketplace.domain.usecases.app_entry.ReadAppEntry
 import com.example.eagermarketplace.domain.usecases.app_entry.SaveAppEntry
+import com.example.eagermarketplace.domain.usecases.item_usecases.DeleteItem
+import com.example.eagermarketplace.domain.usecases.item_usecases.InsertItem
+import com.example.eagermarketplace.domain.usecases.item_usecases.ItemsUseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,6 +45,18 @@ object AppModule {
     @Singleton
     fun providesItemRepository(itemDao: ItemDao): ItemRepository = ItemRepository(itemDao)
 
+
+    @Provides
+    @Singleton
+    fun provideItemUseCase(
+        itemRepository: ItemRepository,
+        itemDao: ItemDao
+    ): ItemsUseCases {
+        return ItemsUseCases(
+            deleteItem = DeleteItem(itemDao),
+            insertItem = InsertItem(itemDao)
+        )
+    }
 
     @Provides
     @Singleton

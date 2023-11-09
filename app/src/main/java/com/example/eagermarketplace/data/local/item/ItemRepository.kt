@@ -1,4 +1,7 @@
-package com.example.eagermarketplace.data.local
+package com.example.eagermarketplace.data.local.item
+
+import com.example.eagermarketplace.data.local.item.Item
+import com.example.eagermarketplace.data.local.item.ItemDao
 
 class ItemRepository(private val itemDao: ItemDao) {
 

@@ -1,7 +1,7 @@
 package com.example.eagermarketplace.domain.usecases.item_usecases
 
-import com.example.eagermarketplace.data.local.Item
-import com.example.eagermarketplace.data.local.ItemDao
+import com.example.eagermarketplace.data.local.item.Item
+import com.example.eagermarketplace.data.local.item.ItemDao
 
 class DeleteItem(
     private val itemDao: ItemDao

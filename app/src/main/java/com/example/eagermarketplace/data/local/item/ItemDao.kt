@@ -1,4 +1,4 @@
-package com.example.eagermarketplace.data.local
+package com.example.eagermarketplace.data.local.item
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import com.example.eagermarketplace.data.local.item.Item
 import kotlinx.coroutines.flow.Flow
 
 

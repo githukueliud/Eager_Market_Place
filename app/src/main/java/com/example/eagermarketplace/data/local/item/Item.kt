@@ -1,4 +1,4 @@
-package com.example.eagermarketplace.data.local
+package com.example.eagermarketplace.data.local.item
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

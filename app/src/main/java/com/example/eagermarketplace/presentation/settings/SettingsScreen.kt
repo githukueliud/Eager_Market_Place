@@ -21,7 +21,12 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.outlined.AccessibilityNew
 import androidx.compose.material.icons.outlined.Logout
+import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material.icons.outlined.Payments
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.ShoppingCart
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -104,15 +109,28 @@ fun SettingsScreen() {
             Row (
                 verticalAlignment = Alignment.CenterVertically
             ){
-                Image(
-                    imageVector = Icons.Outlined.ShoppingCart,
-                    contentDescription = null,
+//
+                Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color.Blue,
+                        contentColor = Color.LightGray
+                    ),
                     modifier = Modifier
                         .size(40.dp)
                         .clip(RoundedCornerShape(50))
-                        .background(Color.Blue),
-                    colorFilter = ColorFilter.tint(Color.LightGray)
-                )
+                ) {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ){
+                        Icon(
+                            imageVector = Icons.Outlined.ShoppingCart,
+                            contentDescription = null,
+                            modifier = Modifier.size(28.dp)
+                        )
+                    }
+                }
                 Spacer(modifier = Modifier.width(20.dp))
                 Text(
                     text = "All Orders",
@@ -137,15 +155,27 @@ fun SettingsScreen() {
             Row (
                 verticalAlignment = Alignment.CenterVertically
             ){
-                Image(
-                    imageVector = Icons.Default.Search,
-                    contentDescription = null,
+                Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color.Blue,
+                        contentColor = Color.LightGray
+                    ),
                     modifier = Modifier
                         .size(40.dp)
                         .clip(RoundedCornerShape(50))
-                        .background(Color.DarkGray),
-                    colorFilter = ColorFilter.tint(Color.LightGray)
-                )
+                ) {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ){
+                        Icon(
+                            imageVector = Icons.Outlined.Search,
+                            contentDescription = null,
+                            modifier = Modifier.size(28.dp)
+                        )
+                    }
+                }
                 Spacer(modifier = Modifier.width(20.dp))
                 Text(
                     text = "Track Order",
@@ -170,15 +200,27 @@ fun SettingsScreen() {
             Row (
                 verticalAlignment = Alignment.CenterVertically
             ){
-                Image(
-                    imageVector = Icons.Default.Payments,
-                    contentDescription = null,
+                Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color.Blue,
+                        contentColor = Color.LightGray
+                    ),
                     modifier = Modifier
                         .size(40.dp)
                         .clip(RoundedCornerShape(50))
-                        .background(Color.DarkGray),
-                    colorFilter = ColorFilter.tint(Color.LightGray)
-                )
+                ) {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ){
+                        Icon(
+                            imageVector = Icons.Outlined.Payments,
+                            contentDescription = null,
+                            modifier = Modifier.size(28.dp)
+                        )
+                    }
+                }
                 Spacer(modifier = Modifier.width(20.dp))
                 Text(
                     text = "Billing And Addresses",
@@ -210,15 +252,27 @@ fun SettingsScreen() {
             Row (
                 verticalAlignment = Alignment.CenterVertically
             ){
-                Image(
-                    imageVector = Icons.Filled.Notifications,
-                    contentDescription = null,
+                Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color.Blue,
+                        contentColor = Color.LightGray
+                    ),
                     modifier = Modifier
                         .size(40.dp)
                         .clip(RoundedCornerShape(50))
-                        .background(Color.Green),
-                    colorFilter = ColorFilter.tint(Color.LightGray)
-                )
+                ) {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ){
+                        Icon(
+                            imageVector = Icons.Filled.Notifications,
+                            contentDescription = null,
+                            modifier = Modifier.size(28.dp)
+                        )
+                    }
+                }
                 Spacer(modifier = Modifier.width(20.dp))
                 Text(
                     text = "Notifications",
@@ -250,15 +304,27 @@ fun SettingsScreen() {
             Row (
                 verticalAlignment = Alignment.CenterVertically
             ){
-                Image(
-                    imageVector = Icons.Outlined.AccessibilityNew,
-                    contentDescription = null,
+                Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color.Blue,
+                        contentColor = Color.LightGray
+                    ),
                     modifier = Modifier
                         .size(40.dp)
                         .clip(RoundedCornerShape(50))
-                        .background(Color.Blue),
-                    colorFilter = ColorFilter.tint(Color.LightGray)
-                )
+                ) {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ){
+                        Icon(
+                            imageVector = Icons.Outlined.AccessibilityNew,
+                            contentDescription = null,
+                            modifier = Modifier.size(28.dp)
+                        )
+                    }
+                }
                 Spacer(modifier = Modifier.width(20.dp))
                 Text(
                     text = "Language",
@@ -283,15 +349,27 @@ fun SettingsScreen() {
             Row (
                 verticalAlignment = Alignment.CenterVertically
             ){
-                Image(
-                    imageVector = Icons.Outlined.Logout,
-                    contentDescription = null,
+                Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color.Blue,
+                        contentColor = Color.LightGray
+                    ),
                     modifier = Modifier
                         .size(40.dp)
                         .clip(RoundedCornerShape(50))
-                        .background(Color.Red),
-                    colorFilter = ColorFilter.tint(Color.LightGray)
-                )
+                ) {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ){
+                        Icon(
+                            imageVector = Icons.Outlined.Logout,
+                            contentDescription = null,
+                            modifier = Modifier.size(28.dp)
+                        )
+                    }
+                }
                 Spacer(modifier = Modifier.width(20.dp))
                 Text(
                     text = "Logout",

@@ -22,6 +22,7 @@ import com.example.eagermarketplace.presentation.cart.CartScreen
 import com.example.eagermarketplace.presentation.favorite.FavoriteScreen
 import com.example.eagermarketplace.presentation.homescreen.HomeScreen
 import com.example.eagermarketplace.presentation.navigation.Destinations
+import com.example.eagermarketplace.presentation.settings.SettingsScreen
 import com.example.eagermarketplace.presentation.user_profile.ProfileScreen
 import com.example.eagermarketplace.presentation.user_profile.UserProfileScreen
 
@@ -33,8 +34,8 @@ fun AppNavigator() {
         listOf(
             BottomNavigationItem(icon = R.drawable.ic_home, text = "Home"),
             BottomNavigationItem(icon = R.drawable.ic_bookmark, text = "Favorite"),
-            BottomNavigationItem(icon = R.drawable.ic_home, text = "Cart"),
-            BottomNavigationItem(icon = R.drawable.ic_home, text = "Profile")
+            BottomNavigationItem(icon = R.drawable.baseline_shopping_cart_24, text = "Cart"),
+            BottomNavigationItem(icon = R.drawable.baseline_settings_24, text = "Settings")
         )
     }
 
@@ -47,8 +48,8 @@ fun AppNavigator() {
 
     selectedItem = when(backstackState?.destination?.route) {
         Destinations.HomeScreen.route -> 0
-        Destinations.CartScreen.route -> 1
-        Destinations.FavoriteScreen.route -> 2
+        Destinations.FavoriteScreen.route -> 1
+        Destinations.CartScreen.route -> 2
         Destinations.ProfileScreen.route -> 3
         else -> 0
     }
@@ -66,11 +67,11 @@ fun AppNavigator() {
                         )
                         1 -> navigateToTab(
                             navController = navController,
-                            Destinations.CartScreen.route
+                            route = Destinations.FavoriteScreen.route
                         )
                         2 -> navigateToTab(
                             navController = navController,
-                            route = Destinations.FavoriteScreen.route
+                            Destinations.CartScreen.route
                         )
                         3 -> navigateToTab(
                             navController = navController,
@@ -90,14 +91,14 @@ fun AppNavigator() {
             composable(route = Destinations.HomeScreen.route) {
                 HomeScreen()
             }
-            composable(route = Destinations.CartScreen.route) {
-                CartScreen()
-            }
             composable(route = Destinations.FavoriteScreen.route) {
                 FavoriteScreen()
             }
+            composable(route = Destinations.CartScreen.route) {
+                CartScreen()
+            }
             composable(route = Destinations.ProfileScreen.route) {
-                ProfileScreen()
+                SettingsScreen()
             }
         }
     }

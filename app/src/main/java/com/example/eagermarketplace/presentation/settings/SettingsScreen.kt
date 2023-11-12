@@ -43,8 +43,15 @@ import com.example.eagermarketplace.R
 fun SettingsScreen() {
 
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 16.dp)
     ) {
+        Text(
+            text = "Settings",
+            fontSize = 28.sp,
+            modifier = Modifier.padding(start = 10.dp, top = 8.dp)
+        )
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -83,7 +90,7 @@ fun SettingsScreen() {
         }
         Text(
             text = "Orders",
-            fontSize = 25.sp,
+            fontSize = 20.sp,
             modifier = Modifier.padding(start = 10.dp),
             fontWeight = FontWeight.SemiBold
         )
@@ -101,7 +108,7 @@ fun SettingsScreen() {
                     imageVector = Icons.Outlined.ShoppingCart,
                     contentDescription = null,
                     modifier = Modifier
-                        .size(60.dp)
+                        .size(40.dp)
                         .clip(RoundedCornerShape(50))
                         .background(Color.Blue),
                     colorFilter = ColorFilter.tint(Color.LightGray)
@@ -109,7 +116,7 @@ fun SettingsScreen() {
                 Spacer(modifier = Modifier.width(20.dp))
                 Text(
                     text = "All Orders",
-                    fontSize = 20.sp
+                    fontSize = 14.sp
                 )
             }
             Icon(
@@ -134,7 +141,7 @@ fun SettingsScreen() {
                     imageVector = Icons.Default.Search,
                     contentDescription = null,
                     modifier = Modifier
-                        .size(60.dp)
+                        .size(40.dp)
                         .clip(RoundedCornerShape(50))
                         .background(Color.DarkGray),
                     colorFilter = ColorFilter.tint(Color.LightGray)
@@ -142,7 +149,7 @@ fun SettingsScreen() {
                 Spacer(modifier = Modifier.width(20.dp))
                 Text(
                     text = "Track Order",
-                    fontSize = 20.sp
+                    fontSize = 14.sp
                 )
             }
             Icon(
@@ -167,7 +174,7 @@ fun SettingsScreen() {
                     imageVector = Icons.Default.Payments,
                     contentDescription = null,
                     modifier = Modifier
-                        .size(60.dp)
+                        .size(40.dp)
                         .clip(RoundedCornerShape(50))
                         .background(Color.DarkGray),
                     colorFilter = ColorFilter.tint(Color.LightGray)
@@ -175,7 +182,7 @@ fun SettingsScreen() {
                 Spacer(modifier = Modifier.width(20.dp))
                 Text(
                     text = "Billing And Addresses",
-                    fontSize = 20.sp
+                    fontSize = 14.sp
                 )
             }
             Icon(
@@ -188,7 +195,7 @@ fun SettingsScreen() {
         Spacer(modifier = Modifier.height(10.dp))
         Text(
             text = "Notifications",
-            fontSize = 25.sp,
+            fontSize = 20.sp,
             modifier = Modifier.padding(start = 10.dp),
             fontWeight = FontWeight.SemiBold
         )
@@ -207,7 +214,7 @@ fun SettingsScreen() {
                     imageVector = Icons.Filled.Notifications,
                     contentDescription = null,
                     modifier = Modifier
-                        .size(60.dp)
+                        .size(40.dp)
                         .clip(RoundedCornerShape(50))
                         .background(Color.Green),
                     colorFilter = ColorFilter.tint(Color.LightGray)
@@ -215,7 +222,7 @@ fun SettingsScreen() {
                 Spacer(modifier = Modifier.width(20.dp))
                 Text(
                     text = "Notifications",
-                    fontSize = 24.sp
+                    fontSize = 14.sp
                 )
             }
             Icon(
@@ -228,7 +235,7 @@ fun SettingsScreen() {
         Spacer(modifier = Modifier.height(10.dp))
         Text(
             text = "Regional",
-            fontSize = 25.sp,
+            fontSize = 20.sp,
             modifier = Modifier.padding(start = 10.dp),
             fontWeight = FontWeight.SemiBold
         )
@@ -247,7 +254,7 @@ fun SettingsScreen() {
                     imageVector = Icons.Outlined.AccessibilityNew,
                     contentDescription = null,
                     modifier = Modifier
-                        .size(60.dp)
+                        .size(40.dp)
                         .clip(RoundedCornerShape(50))
                         .background(Color.Blue),
                     colorFilter = ColorFilter.tint(Color.LightGray)
@@ -255,7 +262,7 @@ fun SettingsScreen() {
                 Spacer(modifier = Modifier.width(20.dp))
                 Text(
                     text = "Language",
-                    fontSize = 24.sp
+                    fontSize = 14.sp
                 )
             }
             Icon(
@@ -280,7 +287,7 @@ fun SettingsScreen() {
                     imageVector = Icons.Outlined.Logout,
                     contentDescription = null,
                     modifier = Modifier
-                        .size(60.dp)
+                        .size(40.dp)
                         .clip(RoundedCornerShape(50))
                         .background(Color.Red),
                     colorFilter = ColorFilter.tint(Color.LightGray)
@@ -288,7 +295,7 @@ fun SettingsScreen() {
                 Spacer(modifier = Modifier.width(20.dp))
                 Text(
                     text = "Logout",
-                    fontSize = 24.sp
+                    fontSize = 14.sp
                 )
             }
             Icon(

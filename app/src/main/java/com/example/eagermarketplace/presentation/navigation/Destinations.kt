@@ -11,6 +11,7 @@ sealed class Destinations(val route: String) {
     object AppNavigatorScreen: Destinations("App_Navigator_Screen")
     object HomeScreen: Destinations("homeScreen" )
     object CartScreen: Destinations("cartScreen")
+    object HistoryScreen: Destinations("historyScreen")
 
     object ProfileScreen: Destinations("profileScreen")
     object FavoriteScreen: Destinations("favoriteScreen")

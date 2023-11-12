@@ -20,6 +20,7 @@ import com.example.eagermarketplace.presentation.bottombar.bottombarcomponent.Bo
 import com.example.eagermarketplace.presentation.bottombar.bottombarcomponent.BottomNavigationItem
 import com.example.eagermarketplace.presentation.cart.CartScreen
 import com.example.eagermarketplace.presentation.favorite.FavoriteScreen
+import com.example.eagermarketplace.presentation.history.HistoryScreen
 import com.example.eagermarketplace.presentation.homescreen.HomeScreen
 import com.example.eagermarketplace.presentation.navigation.Destinations
 import com.example.eagermarketplace.presentation.settings.SettingsScreen
@@ -33,7 +34,7 @@ fun AppNavigator() {
     val bottomNavigationItems = remember {
         listOf(
             BottomNavigationItem(icon = R.drawable.ic_home, text = "Home"),
-            BottomNavigationItem(icon = R.drawable.ic_bookmark, text = "Favorite"),
+            BottomNavigationItem(icon = R.drawable.baseline_history_24, text = "History"),
             BottomNavigationItem(icon = R.drawable.baseline_shopping_cart_24, text = "Cart"),
             BottomNavigationItem(icon = R.drawable.baseline_settings_24, text = "Settings")
         )
@@ -48,7 +49,7 @@ fun AppNavigator() {
 
     selectedItem = when(backstackState?.destination?.route) {
         Destinations.HomeScreen.route -> 0
-        Destinations.FavoriteScreen.route -> 1
+        Destinations.HistoryScreen.route -> 1
         Destinations.CartScreen.route -> 2
         Destinations.ProfileScreen.route -> 3
         else -> 0
@@ -67,7 +68,7 @@ fun AppNavigator() {
                         )
                         1 -> navigateToTab(
                             navController = navController,
-                            route = Destinations.FavoriteScreen.route
+                            route = Destinations.HistoryScreen.route
                         )
                         2 -> navigateToTab(
                             navController = navController,
@@ -91,8 +92,8 @@ fun AppNavigator() {
             composable(route = Destinations.HomeScreen.route) {
                 HomeScreen()
             }
-            composable(route = Destinations.FavoriteScreen.route) {
-                FavoriteScreen()
+            composable(route = Destinations.HistoryScreen.route) {
+                HistoryScreen()
             }
             composable(route = Destinations.CartScreen.route) {
                 CartScreen()

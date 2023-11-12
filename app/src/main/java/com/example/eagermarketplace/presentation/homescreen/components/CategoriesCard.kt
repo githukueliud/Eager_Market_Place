@@ -1,6 +1,7 @@
 package com.example.eagermarketplace.presentation.homescreen.components
 
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -28,7 +29,7 @@ import com.example.eagermarketplace.R
 @Composable
 fun CategoriesCard(
     modifier: Modifier = Modifier,
-    categoryImage: Int,
+    @DrawableRes categoryImage: Int,
     categoryName: String
 ) {
     Card(

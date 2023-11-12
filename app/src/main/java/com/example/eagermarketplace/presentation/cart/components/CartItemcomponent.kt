@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -45,7 +46,9 @@ fun CartItemComponent(
     val productQuantity: MutableState<Int> = remember { mutableStateOf(1) }
     val productTotalPrice = (productPrice * productQuantity.value)
     Row(
-        modifier = Modifier.fillMaxWidth().padding(3.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(3.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Image(
@@ -53,34 +56,34 @@ fun CartItemComponent(
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .size(130.dp)
+                .size(100.dp)
                 .clip(RoundedCornerShape(6.dp))
         )
         Column {
             Text(
                 text = productName,
-                fontSize = 24.sp,
+                fontSize = 20.sp,
                 fontWeight = FontWeight.SemiBold
             )
             Row {
                 Text(
                     text = "Kes. ",
-                    fontSize = 20.sp
+                    fontSize = 16.sp
                 )
                 Text(
                     text = productPrice.toString(),
-                    fontSize = 20.sp
+                    fontSize = 16.sp
                 )
 
             }
             Row {
                 Text(
                     text = "Total Kes. ",
-                    fontSize = 20.sp
+                    fontSize = 16.sp
                 )
                 Text(
                     text = productTotalPrice.toString(),
-                    fontSize = 20.sp
+                    fontSize = 16.sp
                 )
             }
             Row(
@@ -92,27 +95,41 @@ fun CartItemComponent(
                     else
                         Toast.makeText(context, "Minimum product quantity is one!", Toast.LENGTH_SHORT).show()
                 },
-                    shape = RoundedCornerShape(6.dp)
+                    shape = RoundedCornerShape(6.dp),
+                    modifier = Modifier.size(25.dp)
                 ) {
-                    Text(
-                        text = "-",
-                        fontSize = 28.sp
-                    )
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ){
+                        Text(
+                            text = "-",
+                            fontSize = 18.sp
+                        )
+                    }
                 }
                 Spacer(modifier = Modifier.height(10.dp))
                 Text(
                     text = productQuantity.value.toString(),
-                    fontSize = 25.sp
+                    fontSize = 20.sp
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 OutlinedIconButton(
                     onClick = { productQuantity.value++ },
-                    shape = RoundedCornerShape(6.dp)
+                    shape = RoundedCornerShape(6.dp),
+                    modifier = Modifier.size(25.dp)
                 ) {
-                    Text(
-                        text = "+",
-                        fontSize = 28.sp
-                    )
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ){
+                        Text(
+                            text = "+",
+                            fontSize = 18.sp
+                        )
+                    }
                 }
             }
 
@@ -120,7 +137,8 @@ fun CartItemComponent(
         Icon(
             imageVector = Icons.Outlined.Cancel,
             contentDescription = null,
-            modifier = Modifier.size(30.dp)
+            modifier = Modifier
+                .size(24.dp)
                 .clickable { onRemoveCartItemClicked() }
         )
     }

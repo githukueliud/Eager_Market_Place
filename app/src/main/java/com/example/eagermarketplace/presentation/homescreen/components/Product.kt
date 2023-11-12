@@ -98,7 +98,7 @@ fun Product(
                     .clip(RoundedCornerShape(5.dp))
             )
             Text(
-                text = "Ksh. $price",
+                text = "Kes. $price",
                 fontSize = 12.sp,
                 textAlign = TextAlign.Start,
                 modifier = Modifier
@@ -117,7 +117,7 @@ fun Product(
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = "$productQuantity",
+                text = "Quantity: $productQuantity",
                 fontWeight = FontWeight.ExtraLight,
                 fontSize = 10.sp,
                 textAlign = TextAlign.Start,

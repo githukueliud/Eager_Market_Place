@@ -6,6 +6,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -34,8 +35,8 @@ fun CategoriesCard(
 ) {
     Card(
         modifier = Modifier
-            .height(80.dp)
-            .width(80.dp)
+            .height(100.dp)
+            .width(100.dp)
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -45,7 +46,7 @@ fun CategoriesCard(
             Image(
                 painter = painterResource(id = categoryImage),
                 contentDescription = null,
-                modifier = Modifier.size(50.dp)
+                modifier = Modifier.height(70.dp).fillMaxWidth()
                     .clip(RoundedCornerShape(5.dp)),
                 contentScale = ContentScale.Crop
             )

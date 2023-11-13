@@ -16,8 +16,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,12 +31,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.eagermarketplace.R
 import com.example.eagermarketplace.presentation.homescreen.components.CategoriesCard
+import com.example.eagermarketplace.presentation.homescreen.components.Product
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -108,7 +114,82 @@ fun HomeScreen(
                 categoryName = "Delivery"
             )
         }
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(10.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Card(
+                colors = CardDefaults.cardColors(
+                    containerColor = Color.Red,
+                    contentColor = Color.White
+                ),
+                modifier = Modifier
+                    .height(30.dp)
+                    .width(170.dp),
+                shape = RoundedCornerShape(3.dp)
+            ){
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ){
+                    Text(
+                        text = "NEW PRODUCTS",
+                        fontSize = 20.sp
+                    )
+                }
+            }
+            Text(
+                text = "SEE ALL",
+                fontSize = 20.sp,
+                color = Color.Red
+            )
+        }
+        Spacer(modifier = Modifier.height(10.dp))
+        Row {
+            Product(
+                productImage = R.drawable.soko_5,
+                price = 30,
+                productName = "Nyanya",
+                onAddToCartClicked = { /*TODO*/ },
+                productQuantity = 4,
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.onPrimary
+            )
+            Spacer(modifier = Modifier.width(5.dp))
+            Product(
+                productImage = R.drawable.soko_5,
+                price = 30,
+                productName = "Nyanya",
+                onAddToCartClicked = { /*TODO*/ },
+                productQuantity = 4,
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.onPrimary
+            )
+            Spacer(modifier = Modifier.width(5.dp))
+            Product(
+                productImage = R.drawable.soko_5,
+                price = 30,
+                productName = "Nyanya",
+                onAddToCartClicked = { /*TODO*/ },
+                productQuantity = 4,
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.onPrimary
+            )
+            Spacer(modifier = Modifier.width(5.dp))
+            Product(
+                productImage = R.drawable.soko_5,
+                price = 30,
+                productName = "Nyanya",
+                onAddToCartClicked = { /*TODO*/ },
+                productQuantity = 4,
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.onPrimary
+            )
+        }
+        Spacer(modifier = Modifier.height(10.dp))
+
     }
 }
 

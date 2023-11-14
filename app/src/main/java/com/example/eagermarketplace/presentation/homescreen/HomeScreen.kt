@@ -157,27 +157,7 @@ fun HomeScreen(
                 containerColor = MaterialTheme.colorScheme.primary,
                 contentColor = MaterialTheme.colorScheme.onPrimary
             )
-            Spacer(modifier = Modifier.width(5.dp))
-            Product(
-                productImage = R.drawable.soko_5,
-                price = 30,
-                productName = "Nyanya",
-                onAddToCartClicked = { /*TODO*/ },
-                productQuantity = 4,
-                containerColor = MaterialTheme.colorScheme.primary,
-                contentColor = MaterialTheme.colorScheme.onPrimary
-            )
-            Spacer(modifier = Modifier.width(5.dp))
-            Product(
-                productImage = R.drawable.soko_5,
-                price = 30,
-                productName = "Nyanya",
-                onAddToCartClicked = { /*TODO*/ },
-                productQuantity = 4,
-                containerColor = MaterialTheme.colorScheme.primary,
-                contentColor = MaterialTheme.colorScheme.onPrimary
-            )
-            Spacer(modifier = Modifier.width(5.dp))
+            Spacer(modifier = Modifier.width(2.dp))
             Product(
                 productImage = R.drawable.soko_5,
                 price = 30,

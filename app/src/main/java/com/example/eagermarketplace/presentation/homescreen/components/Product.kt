@@ -59,8 +59,8 @@ fun Product(
 ) {
     Card(
         modifier = Modifier
-            .height(160.dp)
-            .width(100.dp)
+            .height(330.dp)
+            .width(190.dp)
     ){
         var isFavorite by remember {
             mutableStateOf(false)
@@ -93,13 +93,13 @@ fun Product(
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .height(50.dp)
-                    .width(80.dp)
+                    .height(200.dp)
+                    .width(180.dp)
                     .clip(RoundedCornerShape(5.dp))
             )
             Text(
                 text = "Kes. $price",
-                fontSize = 12.sp,
+                fontSize = 18.sp,
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -107,7 +107,7 @@ fun Product(
             )
             Text(
                 text = "$productName",
-                fontSize = 16.sp,
+                fontSize = 20.sp,
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -119,7 +119,7 @@ fun Product(
             Text(
                 text = "Quantity: $productQuantity",
                 fontWeight = FontWeight.ExtraLight,
-                fontSize = 10.sp,
+                fontSize = 16.sp,
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -130,7 +130,7 @@ fun Product(
                 modifier = Modifier
                     .height(30.dp)
                     .fillMaxWidth(),
-                shape = MaterialTheme.shapes.medium,
+                shape = RoundedCornerShape(4.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = containerColor,
                     contentColor = contentColor

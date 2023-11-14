@@ -155,7 +155,6 @@ fun HomeScreen(
                 price = 30,
                 productName = "Nyanya",
                 onAddToCartClicked = { /*TODO*/ },
-                productQuantity = 4,
                 containerColor = MaterialTheme.colorScheme.primary,
                 contentColor = MaterialTheme.colorScheme.onPrimary
             )
@@ -165,7 +164,6 @@ fun HomeScreen(
                 price = 30,
                 productName = "Nyanya",
                 onAddToCartClicked = { /*TODO*/ },
-                productQuantity = 4,
                 containerColor = MaterialTheme.colorScheme.primary,
                 contentColor = MaterialTheme.colorScheme.onPrimary
             )

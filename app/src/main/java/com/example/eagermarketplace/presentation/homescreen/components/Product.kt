@@ -53,7 +53,6 @@ fun Product(
     price: Int,
     productName: String,
     onAddToCartClicked: () -> Unit,
-    productQuantity: Int?,
     containerColor: Color,
     contentColor: Color
 ) {
@@ -116,15 +115,15 @@ fun Product(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
-            Text(
-                text = "Quantity: $productQuantity",
-                fontWeight = FontWeight.ExtraLight,
-                fontSize = 16.sp,
-                textAlign = TextAlign.Start,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 3.dp),
-            )
+//            Text(
+//                text = "Quantity: $productQuantity",
+//                fontWeight = FontWeight.ExtraLight,
+//                fontSize = 16.sp,
+//                textAlign = TextAlign.Start,
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .padding(start = 3.dp),
+//            )
             Button(
                 onClick = onAddToCartClicked,
                 modifier = Modifier
@@ -154,7 +153,6 @@ fun ProductPreview() {
         price = 30,
         productName = "Nyanya",
         onAddToCartClicked = { /*TODO*/ },
-        productQuantity = 4,
         containerColor = MaterialTheme.colorScheme.primary,
         contentColor = MaterialTheme.colorScheme.onPrimary
     )

@@ -202,7 +202,7 @@ fun HomeScreen(
                 color = Color.Red
             )
         }
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(5.dp))
         Column(
             modifier = Modifier.fillMaxWidth()
         ) {

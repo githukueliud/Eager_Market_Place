@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -39,6 +40,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.eagermarketplace.R
 import com.example.eagermarketplace.presentation.homescreen.components.CategoriesCard
+import com.example.eagermarketplace.presentation.homescreen.components.DailyNeeds
 import com.example.eagermarketplace.presentation.homescreen.components.Product
 
 
@@ -169,7 +171,62 @@ fun HomeScreen(
             )
         }
         Spacer(modifier = Modifier.height(10.dp))
-
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Card(
+                colors = CardDefaults.cardColors(
+                    containerColor = Color.Black,
+                    contentColor = Color.Blue
+                ),
+                modifier = Modifier
+                    .height(30.dp)
+                    .width(170.dp),
+                shape = RoundedCornerShape(3.dp)
+            ){
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ){
+                    Text(
+                        text = "DAILY NEEDS",
+                        fontSize = 20.sp
+                    )
+                }
+            }
+            Text(
+                text = "SEE ALL",
+                fontSize = 20.sp,
+                color = Color.Red
+            )
+        }
+        Spacer(modifier = Modifier.height(10.dp))
+        Column(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            DailyNeeds(
+                imageId = R.drawable.soko_5,
+                itemPrice = 50,
+                itemName = "Kabej",
+                itemQuantity = "1Kg"
+            )
+            Spacer(modifier = Modifier.height(5.dp))
+            DailyNeeds(
+                imageId = R.drawable.soko_5,
+                itemPrice = 50,
+                itemName = "Kabej",
+                itemQuantity = "1Kg"
+            )
+            Spacer(modifier = Modifier.height(5.dp))
+            DailyNeeds(
+                imageId = R.drawable.soko_5,
+                itemPrice = 50,
+                itemName = "Kabej",
+                itemQuantity = "1Kg"
+            )
+        }
     }
 }
 
